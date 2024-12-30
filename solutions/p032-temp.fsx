@@ -1,19 +1,16 @@
-let expected =
-    { '1' .. '9' }
-    |> Seq.map (fun i -> (i, 1))
-    |> Seq.toArray
+let expected = { '1' .. '9' } |> Seq.map (fun i -> (i, 1)) |> Seq.toArray
 
 let dbg x = (printfn "%A" x)
 
 let rec results =
     seq {
-        for a in 1 .. 9999 do
+        for a in 1..9999 do
             dbg a
-            for b in a .. 9999 do
+
+            for b in a..9999 do
                 let p = a * b
 
-                let concat =
-                    a.ToString() + b.ToString() + p.ToString()
+                let concat = a.ToString() + b.ToString() + p.ToString()
 
                 if concat.Length = 9 then
                     let test =
@@ -23,7 +20,8 @@ let rec results =
                         |> Seq.sort
                         |> Seq.toArray
 
-                    if expected = test then yield p
+                    if expected = test then
+                        yield p
     }
 
 results |> Seq.distinct |> Seq.sum |> dbg
@@ -144,4 +142,3 @@ results |> Seq.distinct |> Seq.sum |> dbg
 //|> Seq.map mapList
 //|> Seq.filter (fun (a, b, p) -> a * b = p)
 //|> Seq.iter (printfn "%A")
-

@@ -15,11 +15,13 @@ let case2 a b x =
 let case3 a b x =
     (((x * 10.) + a) / ((b * 10.) + x)) = (a / b)
 
-let test a b x r = if r then printfn "%A %A %A" a b x
+let test a b x r =
+    if r then
+        printfn "%A %A %A" a b x
 
-for a in 1 .. 9 do
-    for b in 1 .. 9 do
-        for x in 1 .. 9 do
+for a in 1..9 do
+    for b in 1..9 do
+        for x in 1..9 do
             case1 (float a) (float b) (float x) |> test a b x
             case2 (float a) (float b) (float x) |> test a b x
             case3 (float a) (float b) (float x) |> test a b x

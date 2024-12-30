@@ -1,4 +1,5 @@
 let div = 10
+
 let findMaxRecurring num =
     let remainderIndexes = Map.empty
 
@@ -15,5 +16,10 @@ let findMaxRecurring num =
     let result = findMaxRecurring' remainderIndexes (div * 10) 1
     (num, result)
 
-let max = { 2 .. 999 } |> Seq.map findMaxRecurring |> Seq.sortByDescending (fun (x,l) -> l) |> Seq.head
+let max =
+    { 2..999 }
+    |> Seq.map findMaxRecurring
+    |> Seq.sortByDescending (fun (x, l) -> l)
+    |> Seq.head
+
 printfn "%A" max

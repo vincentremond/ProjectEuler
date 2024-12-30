@@ -7,9 +7,7 @@ and primes =
     seq {
         yield 2
 
-        yield!
-            (Seq.unfold (fun i -> Some(i, i + 2)) 3)
-            |> Seq.filter isprime
+        yield! (Seq.unfold (fun i -> Some(i, i + 2)) 3) |> Seq.filter isprime
     }
 
 // TODO
