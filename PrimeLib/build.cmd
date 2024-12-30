@@ -1,4 +1,4 @@
 @ECHO OFF
 
 dotnet tool restore
-dotnet build PrimeLib -- %*
+dotnet build -- %*
